@@ -33,13 +33,12 @@ import AlertComponent from '~/components/AlertComponent.vue'
 export default {
   components: { AlertComponent },
   data: () => ({
-    email: 'john@domain.tld',
-    password: '123456',
+    email: '',
+    password: '',
     isInvalid: false,
   }),
   methods: {
     login() {
-      console.log(this.email, this.password)
 
       if (this.email == '' || this.password == '') {
         this.$store.dispatch(
@@ -55,9 +54,9 @@ export default {
           email: this.email,
           password: this.password,
         })
-
-        this.$router.push('/')
+        //this.$router.push('/')
       } catch (error) {
+        console.log(error)
         this.$store.dispatch(
           BUS_ACTIONS.SET_MESSAGE,
           'Vos identifiants ne sont pas corrects.'

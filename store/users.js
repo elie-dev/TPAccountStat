@@ -7,30 +7,12 @@ export const ACTIONS = {
 }
 
 export const state = () => ({
-  data: [],
-  profile: {},
+  user: null,
 })
 
 export const mutations = {
-  INIT_USER: (state, { profile, users }) => {
-    state.data = users
-    state.profile = profile
-  },
-  ADD_USER: (state, data) => {
-    if (state.data.findIndex((user) => user.email == data.email) == -1) {
-      state.data.push(data)
-
-      localStorage.setItem('users', JSON.stringify(state.data))
-    }
-  },
-  SIGN_IN: (state, data) => {
-    const user = state.data.find(
-      (user) => user.email == data.email && user.password == data.password
-    )
-
-    console.log(user)
-
-    state.profile = user ?? {}
+  SIGN_IN: (state, user) => {
+    state.user = user
   },
   SIGN_OUT: (state) => {
     state.profile = {}
@@ -48,17 +30,20 @@ export const actions = {
 
     commit('INIT_USER', { profile, users })
   },
-  signIn({ commit, state }, data) {
-    commit('SIGN_IN', data)
-
-    if (state.profile.email == undefined) {
-      throw Error('User not found')
+  async signIn({ commit, state }, data) {
+    try {
+      let user = await this.$fire.auth.signInWithEmailAndPassword(data.email, data.password)
+      user = JSON.parse(JSON.stringify(user.user))
+      //console.log(user);
+      this.$cookies.set('profile', JSON.stringify(user), {
+        path: '/',
+        maxAge: 60 * 60 * 24 * 7,
+      })
+      console.log(this.$cookies.get('profile'))
+      commit('SIGN_IN', user)
+    } catch (error) {
+      throw new Error(error)
     }
-
-    this.$cookies.set('profile', JSON.stringify(state.profile), {
-      path: '/',
-      maxAge: 60 * 60 * 24 * 7,
-    })
   },
   signOut({ commit }) {
     this.$cookies.remove('profile')
@@ -74,8 +59,6 @@ export const actions = {
     } catch (error) {
       console.log(error)
     }
-
-    commit('ADD_USER', data)
   },
   removeUser({ commit }) {
     const profile = this.$cookies.get('profile')

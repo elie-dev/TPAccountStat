@@ -25,13 +25,6 @@
         <NuxtLink to="/auth">Me connecter</NuxtLink>
       </v-card-text>
     </v-card>
-
-    <v-data-table
-      :headers="headers"
-      :items="$store.state.users.data"
-      :items-per-page="5"
-      class="elevation-1"
-    ></v-data-table>
   </v-form>
 </template>
 
@@ -51,13 +44,12 @@ export default {
         value: 'password',
       },
     ],
-    email: 'john@domain.tld',
-    password: '123456',
+    email: '',
+    password: '',
   }),
 
   methods: {
     async register() {
-      console.log(this.email, this.password)
 
       if (this.email == '' || this.password == '') {
         this.$store.dispatch(

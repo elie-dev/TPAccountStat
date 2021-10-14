@@ -1,42 +1,42 @@
 <template>
   <div>
-    <v-card class="mx-auto" max-width="400">
-      <v-card-subtitle class="pb-0">
-        {{ $store.state.users.profile.email }}
-      </v-card-subtitle>
-
-      <v-card-actions>
-        <v-btn color="orange" text @click="logout"> Déconnexion </v-btn>
-
-        <v-btn color="error" text @click="removeProfile">
-          Supprimer mon profil
-        </v-btn>
-      </v-card-actions>
-    </v-card>
+    <h1>Couocu</h1>
+    {{ users }}
   </div>
 </template>
 
 <script>
-import { ACTIONS } from '~/store/users'
-
 export default {
-  methods: {
-    logout() {
-      try {
-        this.$store.dispatch(ACTIONS.SIGN_OUT_METHOD)
+  data: () => ({
+    users: [],
+  }),
+  mounted() {
+    // this.$fire.firestore
+    //   .collection('users')
+    //   .get()
+    //   .then(
+    //     (listUser) => (this.users = listUser.docs.map((user) => user.data()))
+    //   )
 
-        this.$router.push('/auth')
-      } catch (error) {}
-    },
-    removeProfile() {
-      try {
-        this.$store.dispatch(ACTIONS.REMOVE_USER_METHOD)
+    // this.$fire.firestore
+    //   .collection('users')
+    //   .where('email', '==', 'jane@domain.tld')
+    //   .get()
+    //   .then(
+    //     (listUser) =>
+    //       (this.users = listUser.docs.map((user) => {
+    //         const { email, displayName } = user.data()
+    //         const uid = user.id
 
-        this.$router.push('/auth')
-      } catch (error) {
-        console.log(error)
-      }
-    },
+    //         return { ...{ email, displayName }, ...{ uid } }
+    //       }))
+    //   )
+
+    /*this.$fire.firestore
+      .collection('users')
+      .doc('EqeVDsRTA5BOG7gCUiGY')
+      .get()
+      .then((user) => console.log(user.data()))*/
   },
 }
 </script>
