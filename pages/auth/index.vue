@@ -1,5 +1,5 @@
 <template>
-  <v-form ref="form">
+  <v-form ref="form" class="mt-lg-16">
     <alert-component />
 
     <v-card class="mb-10">
@@ -67,3 +67,7 @@ export default {
   },
 }
 </script>
+
+<style>
+
+</style>
