@@ -42,7 +42,7 @@ export const actions = {
       console.log(this.$cookies.get('profile'))
       commit('SIGN_IN', user)
     } catch (error) {
-      throw new Error(error)
+      throw new Error()
     }
   },
   signOut({ commit }) {
@@ -57,7 +57,7 @@ export const actions = {
     try {
       await this.$fire.auth.createUserWithEmailAndPassword(email, password)
     } catch (error) {
-      console.log(error)
+      throw new Error()
     }
   },
   removeUser({ commit }) {

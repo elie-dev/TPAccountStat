@@ -12,6 +12,6 @@ export default function ({ app, route, redirect }) {
   }
 
   if (profile.email == undefined && protectedRoutes.includes(route.name)) {
-    return redirect('/auth')
+    return redirect('/auth/login')
   }
 }
