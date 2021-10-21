@@ -60,14 +60,16 @@
 
 <template>
   <main>
-    <v-app-bar class="bar grey"
+    <v-app-bar class="bar info"
       prominent
     >
       <!--src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"-->
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
+      <img class="ml-12" src="~/assets/logos/logoStat.png" width="75em" />
+
       <v-layout align-center justify-end>
-        <v-toolbar-title class="mt-8">Gestion de Budget</v-toolbar-title>
+        <v-toolbar-title class="mt-10 font-weight-bold size-10">Gestion de Budget</v-toolbar-title>
       </v-layout>
 
       <v-spacer></v-spacer>
@@ -82,7 +84,7 @@
 
     </v-app-bar>
 
-    <v-navigation-drawer
+    <v-navigation-drawer class="grey"
       v-model="drawer"
       absolute
       left
@@ -98,19 +100,19 @@
         >
           <v-list-item>
             <nuxt-link to="/dashboard" class="nav-link">
-              <v-list-item-title>Evolution des dépenses</v-list-item-title>
+              <v-list-item-title class="text-white nvbar-text font-weight-bold">Evolution des dépenses</v-list-item-title>
             </nuxt-link>
           </v-list-item>
 
           <v-list-item>
             <nuxt-link to="/dashboard" class="nav-link">
-              <v-list-item-title>Récapitulatif des transactions</v-list-item-title>
+              <v-list-item-title class="nvbar-text font-weight-bold">Récapitulatif des transactions</v-list-item-title>
             </nuxt-link>
           </v-list-item>
 
           <v-list-item>
             <nuxt-link to="/dashboard" class="nav-link">
-            <v-list-item-title>Tableau de bord</v-list-item-title>
+            <v-list-item-title class="nvbar-text font-weight-bold">Tableau de bord</v-list-item-title>
             </nuxt-link>
           </v-list-item>
 
@@ -142,4 +144,11 @@
 .bar {
   color: #778DA9;
 }
+
+.nvbar-text {
+  color: black;
+  font-size: 40px;
+}
+
 </style>
+
