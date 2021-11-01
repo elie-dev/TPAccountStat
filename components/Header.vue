@@ -1,90 +1,35 @@
-<!--<template>
-  <v-toolbar
-    dark
-    prominent
-    src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"
-  >
-
-    <v-app-bar-nav-icon>
-      <v-navigation-drawer
-        v-model="drawer"
-        absolute
-        bottom
-        temporary
-      >
-        <v-list
-          nav
-          dense
-        >
-          <v-list-item-group
-            v-model="group"
-            active-class="deep-purple&#45;&#45;text text&#45;&#45;accent-4"
-          >
-            <v-list-item>
-              <v-list-item-title>Foo</v-list-item-title>
-            </v-list-item>
-
-            <v-list-item>
-              <v-list-item-title>Bar</v-list-item-title>
-            </v-list-item>
-
-            <v-list-item>
-              <v-list-item-title>Fizz</v-list-item-title>
-            </v-list-item>
-
-            <v-list-item>
-              <v-list-item-title>Buzz</v-list-item-title>
-            </v-list-item>
-          </v-list-item-group>
-        </v-list>
-      </v-navigation-drawer>
-    </v-app-bar-nav-icon>
-
-
-
-    <v-layout align-center justify-end>
-      <v-toolbar-title class="ma-8">Gestion de Compte</v-toolbar-title>
-    </v-layout>
-    <v-spacer></v-spacer>
-
-    <v-btn icon>
-      <v-icon>mdi-account</v-icon>
-    </v-btn>
-
-    <v-btn icon>
-      <v-icon>mdi-export</v-icon>
-    </v-btn>
-  </v-toolbar>
-</template>-->
-
 
 <template>
   <main>
-    <v-app-bar class="bar info"
+
+    <v-app-bar class="primary"
       prominent
     >
       <!--src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"-->
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
-      <img class="ml-12" src="~/assets/logos/logoStat.png" width="75em" />
+      <img class="ml-12 logo" width="75em" src="~/assets/logos/logoStat.png"/>
 
-      <v-layout align-center justify-end>
-        <v-toolbar-title class="mt-10 font-weight-bold size-10">Gestion de Budget</v-toolbar-title>
+      <v-layout align-center justify-end text-center>
+        <v-toolbar-title class="mytitle font-weight-bold width-40em">{{ title }}</v-toolbar-title>
       </v-layout>
 
       <v-spacer></v-spacer>
 
       <v-btn icon>
-        <nuxt-link to="/auth" class="nav-link"><v-icon>mdi-account</v-icon></nuxt-link>
+        <nuxt-link to="/auth" class="nav-link">
+          <v-icon color="white">
+            mdi-account
+          </v-icon></nuxt-link>
       </v-btn>
 
-      <v-btn icon>
+      <v-btn icon dark>
         <v-icon>mdi-export</v-icon>
       </v-btn>
 
     </v-app-bar>
 
-    <v-navigation-drawer class="grey"
+    <v-navigation-drawer class="light-grey"
       v-model="drawer"
       absolute
       left
@@ -98,7 +43,7 @@
           v-model="group"
           active-class="deep-purple&#45;&#45;text text&#45;&#45;accent-4"
         >
-          <v-list-item>
+          <v-list-item class="mt-16">
             <nuxt-link to="/dashboard" class="nav-link">
               <v-list-item-title class="text-white nvbar-text font-weight-bold">Evolution des dépenses</v-list-item-title>
             </nuxt-link>
@@ -130,6 +75,7 @@
     data: () => ({
       drawer: false,
       group: null,
+      title: 'Gestion de Budget',
     }),
 
     watch: {
@@ -140,14 +86,28 @@
   }
 </script>
 
-<style>
-.bar {
-  color: #778DA9;
-}
+<style scoped>
 
-.nvbar-text {
-  color: black;
-  font-size: 40px;
+@media only screen and (max-width: 799px) {
+  .mytitle {
+    font-size: 3rem;
+    margin-top: 0.7em;
+    color: white;
+  }
+}
+@media only screen and (min-width: 800px) {
+  .mytitle {
+    font-size: 3.5rem;
+    margin-top: 0.4em;
+    color: white;
+  }
+}
+@media only screen and (min-width: 900px) {
+  .mytitle {
+    font-size: 4rem;
+    margin-top: 0.25em;
+    color: white;
+  }
 }
 
 </style>
