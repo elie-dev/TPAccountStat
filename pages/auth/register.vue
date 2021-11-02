@@ -15,6 +15,14 @@
         />
 
         <v-text-field
+          v-model="name"
+          :rules="nameRules"
+          label="Name"
+          outlined
+          required
+        />
+
+        <v-text-field
           v-model="password"
           :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
           :rules="passwordRules"
@@ -123,7 +131,6 @@ export default {
       name: '',
       nameRules: [
         v => !!v || 'Name is required',
-        v => (v && v.length <= 10) || 'Name must be less than 10 characters',
       ],
       email: '',
       emailRules: [
@@ -146,7 +153,7 @@ export default {
   methods: {
     async register() {
 
-      if (this.email == '' || this.password == '') {
+      if (this.email == '' || this.password == '' || this.name == '') {
         this.$store.dispatch(
           BUS_ACTIONS.SET_MESSAGE,
           'Tous les champs sont requis.'
@@ -159,6 +166,7 @@ export default {
         await this.$store.dispatch(ACTIONS.ADD_USER_METHOD, {
           email: this.email,
           password: this.password,
+          name: this.name,
         })
         this.$router.push('/auth/login')
       } catch (error) {

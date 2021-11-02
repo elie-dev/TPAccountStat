@@ -25,7 +25,6 @@ export const actions = {
     try {
       let user = await this.$fire.auth.signInWithEmailAndPassword(data.email, data.password)
       user = JSON.parse(JSON.stringify(user.user))
-      //console.log(user);
       this.$cookies.set('user', JSON.stringify(user), {
         path: '/',
         maxAge: 60 * 60 * 24 * 7,
@@ -51,10 +50,21 @@ export const actions = {
   },
   async addUser({ commit }, data) {
     // const email = data.email
-    const { email, password } = data
+    const { email, password, name } = data
 
     try {
-      await this.$fire.auth.createUserWithEmailAndPassword(email, password)
+      const user = await this.$fire.auth.createUserWithEmailAndPassword(email, password)
+      const currentUser = this.$fire.auth.currentUser
+      currentUser.updateProfile({
+        displayName: name
+      }).then(() => {
+        // Update successful
+        // ...
+      }).catch((error) => {
+        console.log(error)
+        // An error occurred
+        // ...
+      });
     } catch (error) {
       throw new Error()
     }
