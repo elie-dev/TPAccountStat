@@ -19,7 +19,7 @@
           </v-icon></nuxt-link>
       </v-btn>
 
-      <v-btn icon dark @click="logOut">
+      <v-btn icon dark class="nav-link" @click="logOut">
         <v-icon>mdi-export</v-icon>
       </v-btn>
 
@@ -40,20 +40,36 @@
           active-class="deep-purple&#45;&#45;text text&#45;&#45;accent-4"
         >
           <v-list-item>
-            <nuxt-link to="/dashboard" class="nav-link sideList">
-              <v-list-item-title class="text-white nvbar-text font-weight-bold">Evolution des dépenses</v-list-item-title>
+              <v-list-item-title class="menuTexte text-white nvbar-text pt-16">Menu :</v-list-item-title>
+          </v-list-item>
+
+          <v-list-item>
+            <nuxt-link to="/auth/profil" class="nav-link sideList pt-10">
+              <v-list-item-title class="listeTexte nvbar-text">Page de Profil</v-list-item-title>
             </nuxt-link>
           </v-list-item>
 
           <v-list-item>
-            <nuxt-link to="/dashboard" class="nav-link">
-              <v-list-item-title class="nvbar-text font-weight-bold">Récapitulatif des transactions</v-list-item-title>
+            <nuxt-link to="/auth/dashboard" class="nav-link sideList">
+              <v-list-item-title class="listeTexte nvbar-text">Evolution des dépenses</v-list-item-title>
             </nuxt-link>
           </v-list-item>
 
           <v-list-item>
-            <nuxt-link to="/dashboard" class="nav-link">
-            <v-list-item-title class="nvbar-text font-weight-bold">Tableau de bord</v-list-item-title>
+            <nuxt-link to="/auth/dashboard" class="nav-link mt-4">
+              <v-list-item-title class="listeTexte nvbar-text">Récapitulatif des transactions</v-list-item-title>
+            </nuxt-link>
+          </v-list-item>
+
+          <v-list-item>
+            <nuxt-link to="/auth/dashboard" class="nav-link mt-4">
+            <v-list-item-title class="listeTexte nvbar-text">Tableau de bord</v-list-item-title>
+            </nuxt-link>
+          </v-list-item>
+
+          <v-list-item>
+            <nuxt-link to="/auth/dashboard" class="nav-link mt-4">
+              <v-list-item-title class="listeTexte nvbar-text">Ajouter une transaction</v-list-item-title>
             </nuxt-link>
           </v-list-item>
 
@@ -91,6 +107,17 @@
 </script>
 
 <style scoped>
+.menuTexte {
+  font-size: 1.4em!important;
+  font-weight: bolder!important;
+  outline: none;
+}
+
+.listeTexte {
+  font-size: 1.05em!important;
+  font-weight: bold!important;
+  outline: none;
+}
 
 .sideBar {
   z-index: 4;
@@ -101,9 +128,11 @@
   vertical-align: middle;
   height: 60px!important;
 }
-
 .sideList {
-  margin-top: 12em;
+  padding-top: 2em;
+}
+.nav-link {
+  text-decoration: none!important;
 }
 
 </style>
