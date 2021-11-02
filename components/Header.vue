@@ -40,7 +40,7 @@
           active-class="deep-purple&#45;&#45;text text&#45;&#45;accent-4"
         >
           <v-list-item>
-            <nuxt-link to="/dashboard" class="nav-link">
+            <nuxt-link to="/dashboard" class="nav-link sideList">
               <v-list-item-title class="text-white nvbar-text font-weight-bold">Evolution des dépenses</v-list-item-title>
             </nuxt-link>
           </v-list-item>
@@ -78,7 +78,7 @@
       logOut() {
         this.$store.dispatch(ACTIONS.SIGN_OUT_METHOD)
         .then(() => {
-          this.$router.push('/auth')
+          this.$router.push('/auth/login')
         })
       },
     },
@@ -105,7 +105,6 @@
 .sideList {
   margin-top: 12em;
 }
-
 
 </style>
 
