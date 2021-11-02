@@ -14,6 +14,9 @@ export const mutations = {
   SIGN_IN: (state, user) => {
     state.user = user
   },
+  SIGN_OUT: (state) => {
+    state.user = null
+  },
   REMOVE_USER: (state, data) => {
     const index = state.data.findIndex((el) => el.email == data.email)
     state.data.splice(index, 1)
@@ -37,7 +40,6 @@ export const actions = {
   },
   signOut({ commit }) {
     this.$cookies.remove('user')
-
     commit('SIGN_OUT')
   },
   forgotPassword({}, data) {
