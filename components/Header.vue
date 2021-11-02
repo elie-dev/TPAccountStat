@@ -2,7 +2,7 @@
 <template>
   <main>
 
-    <v-app-bar class="primary"
+    <v-app-bar class="head"
       prominent
     >
       <!--src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"-->
@@ -29,7 +29,7 @@
 
     </v-app-bar>
 
-    <v-navigation-drawer class="light-grey"
+    <v-navigation-drawer class="light-grey sideBar"
       v-model="drawer"
       absolute
       left
@@ -39,11 +39,11 @@
         nav
         dense
       >
-        <v-list-item-group
+        <v-list-item-group class="sideList"
           v-model="group"
           active-class="deep-purple&#45;&#45;text text&#45;&#45;accent-4"
         >
-          <v-list-item class="mt-16">
+          <v-list-item>
             <nuxt-link to="/dashboard" class="nav-link">
               <v-list-item-title class="text-white nvbar-text font-weight-bold">Evolution des dépenses</v-list-item-title>
             </nuxt-link>
@@ -87,6 +87,18 @@
 </script>
 
 <style scoped>
+
+.sideBar {
+  z-index: 4;
+}
+.head {
+  z-index: 8;
+  background-color: #778DA9!important;
+}
+
+.sideList {
+  margin-top: 12em;
+}
 
 @media only screen and (max-width: 799px) {
   .mytitle {
