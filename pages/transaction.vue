@@ -42,56 +42,22 @@
 
               <v-col
                 cols="12"
-                lg="6"
+                sm="6"
+                md="4"
               >
                 <v-menu
-                  ref="menu1"
-                  v-model="menu1"
+                  ref="menu"
+                  v-model="menu"
                   :close-on-content-click="false"
+                  :return-value.sync="date"
                   transition="scale-transition"
                   offset-y
-                  max-width="290px"
                   min-width="auto"
                 >
                   <template v-slot:activator="{ on, attrs }">
                     <v-text-field
-                      v-model="dateFormatted"
-                      label="Date"
-                      hint="MM/DD/YYYY format"
-                      persistent-hint
-                      prepend-icon="mdi-calendar"
-                      v-bind="attrs"
-                      @blur="date = parseDate(dateFormatted)"
-                      v-on="on"
-                    ></v-text-field>
-                  </template>
-                  <v-date-picker
-                    v-model="date"
-                    no-title
-                    @input="menu1 = false"
-                  ></v-date-picker>
-                </v-menu>
-                <p>Date in ISO format: <strong>{{ date }}</strong></p>
-              </v-col>
-
-              <v-col
-                cols="12"
-                lg="6"
-              >
-                <v-menu
-                  v-model="menu2"
-                  :close-on-content-click="false"
-                  transition="scale-transition"
-                  offset-y
-                  max-width="290px"
-                  min-width="auto"
-                >
-                  <template v-slot:activator="{ on, attrs }">
-                    <v-text-field
-                      v-model="computedDateFormatted"
-                      label="Date (read only text field)"
-                      hint="MM/DD/YYYY format"
-                      persistent-hint
+                      v-model="date"
+                      label="Picker in menu"
                       prepend-icon="mdi-calendar"
                       readonly
                       v-bind="attrs"
@@ -101,11 +67,27 @@
                   <v-date-picker
                     v-model="date"
                     no-title
-                    @input="menu2 = false"
-                  ></v-date-picker>
+                    scrollable
+                  >
+                    <v-spacer></v-spacer>
+                    <v-btn
+                      text
+                      color="primary"
+                      @click="menu = false"
+                    >
+                      Cancel
+                    </v-btn>
+                    <v-btn
+                      text
+                      color="primary"
+                      @click="$refs.menu.save(date)"
+                    >
+                      OK
+                    </v-btn>
+                  </v-date-picker>
                 </v-menu>
-                <p>Date in ISO format: <strong>{{ date }}</strong></p>
               </v-col>
+              <v-spacer></v-spacer>
 
             </v-row>
           </v-container>
