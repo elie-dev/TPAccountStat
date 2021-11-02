@@ -160,6 +160,7 @@ export default {
           email: this.email,
           password: this.password,
         })
+        this.$router.push('/auth/login')
       } catch (error) {
         this.$store.dispatch(
           BUS_ACTIONS.SET_MESSAGE,

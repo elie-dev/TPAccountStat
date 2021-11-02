@@ -3,7 +3,7 @@
     <div class="form">
       <div>
         <div class="logo"><img src="~/assets/images/logoStat.png" /></div>
-        <div class="font-weight-bold text-h3 text-center mt-5 mb-5">Se connecter</div>
+        <div class="font-weight-bold text-h3 text-center mt-5 mb-5">réinitialiser mot de passe</div>
         <v-form
           ref="form"
           v-model="valid"
@@ -16,31 +16,17 @@
           outlined
           required
         />
-
-        <v-text-field
-          v-model="password"
-          :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-          :rules="passwordRules"
-          :type="show1 ? 'text' : 'password'"
-          label="Mot de passe"
-          outlined
-          required
-          @click:append="show1 = !show1"
-        />
         <div>
-          <NuxtLink to="/auth/forgotPassword">Mot de passe oublié</NuxtLink>
-        </div>
-        <div>
-          <NuxtLink to="/auth/register">M'enregister</NuxtLink>
+          <NuxtLink to="/auth/login">Me connecter</NuxtLink>
         </div>
         <div class="mt-4">
           <v-row justify="center">
             <v-btn
               color="success"
               class="mr-4"
-              @click="login"
+              @click="forgotPassword"
             >
-              Se connecter
+              Envoyer
             </v-btn>
           </v-row>
         </div>
@@ -124,7 +110,6 @@ import AlertComponent from '~/components/AlertComponent.vue'
 export default {
   components: { AlertComponent },
   data: () => ({
-      show1: false,
       valid: true,
       email: '',
       emailRules: [
@@ -132,33 +117,21 @@ export default {
         v => /.+@.+\..+/.test(v) || 'E-mail doit être valide',
       ],
       password: '',
-      passwordRules: [
-        v => !!v || 'Mot de passe obligatoire',
-      ],
       isInvalid: false,
     }),
   methods: {
-    async login() {
-
-      if (this.email == '' || this.password == '') {
-        this.$store.dispatch(
-          BUS_ACTIONS.SET_MESSAGE,
-          'Tous les champs sont requis.'
-        )
-
-        return
-      }
+    async forgotPassword() {
 
       try {
-        await this.$store.dispatch(ACTIONS.SIGN_IN_METHOD, {
+        await this.$store.dispatch(ACTIONS.FORGOT_PASSWORD_METHOD, {
           email: this.email,
-          password: this.password,
         })
-        this.$router.push('/')
+        //this.$router.push('/')
       } catch (error) {
+        console.log(error)
         this.$store.dispatch(
           BUS_ACTIONS.SET_MESSAGE,
-          'Vos identifiants ne sont pas corrects.'
+          'Email inconnu'
         )
       }
     },

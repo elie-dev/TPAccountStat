@@ -4,14 +4,14 @@ export default function ({ app, route, redirect }) {
   const protectedRoutes = ['index']
   const guestRoutes = ['auth-login', 'auth-register']
 
-  const profile = app.$cookies.get('profile') ?? {}
-  console.log(profile)
+  const user = app.$cookies.get('user') ?? {}
+  console.log(user)
 
-  if (profile.email != undefined && guestRoutes.includes(route.name)) {
+  if (user.email != undefined && guestRoutes.includes(route.name)) {
     return redirect('/')
   }
 
-  if (profile.email == undefined && protectedRoutes.includes(route.name)) {
+  if (user.email == undefined && protectedRoutes.includes(route.name)) {
     return redirect('/auth/login')
   }
 }
