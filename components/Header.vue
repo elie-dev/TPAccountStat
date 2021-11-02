@@ -19,7 +19,7 @@
           </v-icon></nuxt-link>
       </v-btn>
 
-      <v-btn icon dark @click="this.$store.dispatch(ACTIONS.ADD_USER_METHOD">
+      <v-btn icon dark @click="logOut">
         <v-icon>mdi-export</v-icon>
       </v-btn>
 
@@ -66,6 +66,7 @@
 
 
 <script>
+  import { ACTIONS } from '~/store/users'
 
   export default {
     data: () => ({
@@ -73,7 +74,14 @@
       group: null,
       title: 'Gestion de Budget',
     }),
-
+    methods: {
+      logOut() {
+        this.$store.dispatch(ACTIONS.SIGN_OUT_METHOD)
+        .then(() => {
+          this.$router.push('/auth')
+        })
+      },
+    },
     watch: {
       group () {
         this.drawer = false

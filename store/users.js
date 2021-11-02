@@ -16,6 +16,7 @@ export const mutations = {
   },
   SIGN_OUT: (state) => {
     state.user = null
+    console.log('Vous êtes déconnecté...');
   },
   REMOVE_USER: (state, data) => {
     const index = state.data.findIndex((el) => el.email == data.email)
