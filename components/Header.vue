@@ -8,11 +8,7 @@
       <!--src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"-->
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
-      <img class="ml-12 logo" width="75em" src="~/assets/logos/logoStat.png"/>
-
-      <v-layout align-center justify-end text-center>
-        <v-toolbar-title class="mytitle font-weight-bold width-40em">{{ title }}</v-toolbar-title>
-      </v-layout>
+      <img class="ml-12 logo" width="30em" src="~/assets/logos/logoStat.png"/>
 
       <v-spacer></v-spacer>
 
@@ -23,7 +19,7 @@
           </v-icon></nuxt-link>
       </v-btn>
 
-      <v-btn icon dark>
+      <v-btn icon dark @click="this.$store.dispatch(ACTIONS.ADD_USER_METHOD">
         <v-icon>mdi-export</v-icon>
       </v-btn>
 
@@ -94,33 +90,14 @@
 .head {
   z-index: 8;
   background-color: #778DA9!important;
+  vertical-align: middle;
+  height: 60px!important;
 }
 
 .sideList {
   margin-top: 12em;
 }
 
-@media only screen and (max-width: 799px) {
-  .mytitle {
-    font-size: 3rem;
-    margin-top: 0.7em;
-    color: white;
-  }
-}
-@media only screen and (min-width: 800px) {
-  .mytitle {
-    font-size: 3.5rem;
-    margin-top: 0.4em;
-    color: white;
-  }
-}
-@media only screen and (min-width: 900px) {
-  .mytitle {
-    font-size: 4rem;
-    margin-top: 0.25em;
-    color: white;
-  }
-}
 
 </style>
 
