@@ -1,6 +1,5 @@
 <template>
 
-
   <v-row justify="center">
     <v-dialog
       v-model="dialog"
@@ -14,7 +13,7 @@
           v-bind="attrs"
           v-on="on"
         >
-          Open Dialog
+          Ajouter une donnée
         </v-btn>
       </template>
       <v-card>
@@ -34,60 +33,29 @@
                 </v-btn>
               </v-btn-toggle>
               <v-col cols="12">
+                <v-text-field label="nom" type='text' required></v-text-field>
+              </v-col>
+              <v-col cols="12">
                 <v-text-field label="sous-categorie" type='text' required></v-text-field>
               </v-col>
               <v-col cols="12">
                 <v-text-field label="montant" type="number" required></v-text-field>
               </v-col>
 
-              <v-col
-                cols="12"
-                sm="6"
-                md="4"
-              >
-                <v-menu
-                  ref="menu"
-                  v-model="menu"
-                  :close-on-content-click="false"
-                  :return-value.sync="date"
-                  transition="scale-transition"
-                  offset-y
-                  min-width="auto"
-                >
+              <v-col cols="12" sm="6" md="4">
+                <v-menu ref="menu" v-model="menu" :close-on-content-click="false" :return-value.sync="date" transition="scale-transition" offset-y min-width="auto">
                   <template v-slot:activator="{ on, attrs }">
-                    <v-text-field
-                      v-model="date"
-                      label="Picker in menu"
-                      prepend-icon="mdi-calendar"
-                      readonly
-                      v-bind="attrs"
-                      v-on="on"
-                    ></v-text-field>
+                    <v-text-field v-model="date" label="Picker in menu" prepend-icon="mdi-calendar" readonly v-bind="attrs" v-on="on"></v-text-field>
                   </template>
-                  <v-date-picker
-                    v-model="date"
-                    no-title
-                    scrollable
-                  >
+
+                  <v-date-picker v-model="date" no-title scrollable>
                     <v-spacer></v-spacer>
-                    <v-btn
-                      text
-                      color="primary"
-                      @click="menu = false"
-                    >
-                      Cancel
-                    </v-btn>
-                    <v-btn
-                      text
-                      color="primary"
-                      @click="$refs.menu.save(date)"
-                    >
-                      OK
-                    </v-btn>
+                    <v-btn text color="primary" @click="menu = false">Cancel</v-btn>
+                    <v-btn text color="primary" @click="$refs.menu.save(date)">OK</v-btn>
                   </v-date-picker>
+
                 </v-menu>
               </v-col>
-              <v-spacer></v-spacer>
 
             </v-row>
           </v-container>
@@ -99,7 +67,7 @@
             text
             @click="dialog = false"
           >
-            Effacer
+            Annuler
           </v-btn>
           <v-btn
             color="success"
@@ -120,8 +88,6 @@ export default {
     dialog: false,
     date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
     menu: false,
-    modal: false,
-    menu2: false,
   }),
 }
 </script>
