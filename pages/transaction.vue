@@ -29,7 +29,6 @@
             v-on="on"
             color="success"
             text
-            @click="addTransaction"
           >
             Ajouter une donnée
           </v-btn>
@@ -82,7 +81,7 @@
             <v-btn color="warning" text @click="dialog = false">
               Annuler
             </v-btn>
-            <v-btn color="success" text @click="dialog = false">
+            <v-btn color="success" text @click="addTransaction">
               Enregistrer
             </v-btn>
           </v-card-actions>
@@ -224,6 +223,7 @@ export default {
     },
 
     async addTransaction() {
+      this.dialog = false
       const data = {
         categorie : this.categorie,
         name : this.name,
