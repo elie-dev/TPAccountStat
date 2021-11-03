@@ -15,7 +15,6 @@
         </v-chip>
       </template>
     </v-data-table>
-        
 
     <v-row justify="center">
       <v-dialog
@@ -42,25 +41,24 @@
           <v-card-text>
             <v-container>
               <v-row>
-                <v-btn-toggle borderless>
-                  <v-btn value="left">
+                <v-btn-toggle borderless v-model="categorie">
+                  <v-btn value="revenue">
                     <span class="hidden-sm-and-down">Revenue</span>
                   </v-btn>
 
-                  <v-btn value="center">
+                  <v-btn value="depense">
                     <span class="hidden-sm-and-down">Dépense</span>
                   </v-btn>
                 </v-btn-toggle>
                 <v-col cols="12">
-                  <v-text-field label="nom" type='text' required></v-text-field>
+                  <v-text-field v-model="name" label="nom" type='text' required></v-text-field>
                 </v-col>
                 <v-col cols="12">
-                  <v-text-field label="sous-categorie" type='text' required></v-text-field>
+                  <v-text-field v-model="tag" label="sous-categorie" type='text' required></v-text-field>
                 </v-col>
                 <v-col cols="12">
-                  <v-text-field label="montant" type="number" required></v-text-field>
+                  <v-text-field v-model="montant" label="montant" type="number" required></v-text-field>
                 </v-col>
-
                 <v-col cols="12" sm="6" md="4">
                   <v-menu ref="menu" v-model="menu" :close-on-content-click="false" :return-value.sync="date" transition="scale-transition" offset-y min-width="auto">
                     <template v-slot:activator="{ on, attrs }">
