@@ -15,7 +15,7 @@
         </v-chip>
       </template>
     </v-data-table>
-
+        
 
     <v-row justify="center">
       <v-dialog
@@ -25,10 +25,12 @@
       >
         <template v-slot:activator="{ on, attrs }">
           <v-btn
-            color="primary"
             dark
             v-bind="attrs"
             v-on="on"
+            color="success"
+            text
+            @click="addTransaction"
           >
             Ajouter une donnée
           </v-btn>
@@ -94,13 +96,32 @@
 </template>
 
 <script>
+
+import { ACTIONS } from '~/store/transaction'
+import { BUS_ACTIONS } from '~/store/bus'
+
 export default {
-  data () {
-    return {
-      dialog: false,
-      date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
-      menu: false,
-      headers: [
+  data: () => ({
+    dialog: false,
+    date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
+    menu: false,
+    modal: false,
+    menu2: false,
+
+    name: '',
+    montant: '',
+    tag: '',
+    tagRules: [
+      v => !!v || 'Un tag est obligatoire',
+    ],
+    date: '',
+    dateRules: [
+      v => !!v || 'Une date est obligatoire',
+    ],
+    categorie: '',
+
+
+    headers: [
         {
           text: 'Dessert (100g serving)',
           align: 'start',
@@ -195,13 +216,34 @@ export default {
           iron: '6%',
         },
       ],
-    }
-  },
+  }),
+
   methods: {
-    getColor (calories) {
+     getColor (calories) {
       if (calories > 400) return 'red'
       else if (calories > 200) return 'orange'
       else return 'green'
+    },
+
+    async addTransaction() {
+      const data = {
+        categorie : this.categorie,
+        name : this.name,
+        tag : this.tag,
+        montant : this.montant,
+        date : this.date
+      }
+
+      try {
+        await this.$store.dispatch(ACTIONS.ADD_TRANSACTION, {
+          data: data
+        })
+      } catch (error) {
+        this.$store.dispatch(
+          BUS_ACTIONS.SET_MESSAGE,
+          'Une erreur est survenue pendant l ajout de votre transaction.'
+        )
+      }
     },
   },
 }
