@@ -13,14 +13,17 @@
       <v-spacer></v-spacer>
 
       <v-btn icon>
-        <nuxt-link to="/auth" class="nav-link">
+        <nuxt-link to="/profil" class="nav-link">
           <v-icon color="white">
             mdi-account
           </v-icon></nuxt-link>
       </v-btn>
 
-      <v-btn icon dark class="nav-link" @click="logOut">
-        <v-icon>mdi-export</v-icon>
+      <v-btn icon @click="logOut">
+        <nuxt-link to="/auth" class="nav-link">
+          <v-icon color="white">
+            mdi-export
+          </v-icon></nuxt-link>
       </v-btn>
 
     </v-app-bar>
@@ -50,25 +53,25 @@
           </v-list-item>
 
           <v-list-item>
-            <nuxt-link to="/auth/dashboard" class="nav-link sideList">
+            <nuxt-link to="/dashboard" class="nav-link sideList">
               <v-list-item-title class="listeTexte nvbar-text">Evolution des dépenses</v-list-item-title>
             </nuxt-link>
           </v-list-item>
 
           <v-list-item>
-            <nuxt-link to="/auth/dashboard" class="nav-link mt-4">
+            <nuxt-link to="/dashboard" class="nav-link mt-4">
               <v-list-item-title class="listeTexte nvbar-text">Récapitulatif des transactions</v-list-item-title>
             </nuxt-link>
           </v-list-item>
 
           <v-list-item>
-            <nuxt-link to="/auth/dashboard" class="nav-link mt-4">
+            <nuxt-link to="/dashboard" class="nav-link mt-4">
             <v-list-item-title class="listeTexte nvbar-text">Tableau de bord</v-list-item-title>
             </nuxt-link>
           </v-list-item>
 
           <v-list-item>
-            <nuxt-link to="/auth/dashboard" class="nav-link mt-4">
+            <nuxt-link to="/transactions" class="nav-link mt-4">
               <v-list-item-title class="listeTexte nvbar-text">Ajouter une transaction</v-list-item-title>
             </nuxt-link>
           </v-list-item>
