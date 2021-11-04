@@ -173,6 +173,9 @@ export default {
       v => !!v || 'Une date est obligatoire',
     ],
     categorie: '',
+    categorieRules: [
+      v => !!v || 'Une categorie est obligatoire',
+    ],
 
 
     headers: [
@@ -197,7 +200,7 @@ export default {
     },
 
     async addTransaction() {
-      if (this.name == '' || this.categorie == '' || this.montant == '') {
+      if (this.tag == '' || this.name == '' || this.categorie == '' || this.montant == '' || this.date == '') {
         this.$store.dispatch(
           BUS_ACTIONS.SET_MESSAGE,
           'Tous les champs sont requis.'
