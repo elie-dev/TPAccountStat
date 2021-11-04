@@ -87,7 +87,7 @@ import {ACTIONS} from "~/store/users";
 export default {
   components: { Header },
   data: () => ({
-    connectedUser: ,
+    connectedUser: "",
     name: "",
     email: "",
     users: [],
