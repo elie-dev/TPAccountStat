@@ -1,5 +1,9 @@
 # app
 
+- ```elie-dev``` : Elie GUILBAUD
+- ```ketzatl``` : Morgan NOTT
+- ```Max_Le_Jeune``` : Maxime LE JEUNE
+
 ## Build Setup
 
 ```bash
