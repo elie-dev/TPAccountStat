@@ -43,35 +43,35 @@
           active-class="deep-purple&#45;&#45;text text&#45;&#45;accent-4"
         >
           <v-list-item>
-              <v-list-item-title class="menuTexte text-white nvbar-text pt-16">Menu :</v-list-item-title>
+              <v-list-item-title class="menuTexte text-white nvbar-text pt-16 mb-4">Menu :</v-list-item-title>
           </v-list-item>
 
           <v-list-item>
-            <nuxt-link to="/auth/profil" class="nav-link sideList pt-10">
+            <nuxt-link to="/auth/profil" class="nav-link">
               <v-list-item-title class="listeTexte nvbar-text">Page de Profil</v-list-item-title>
             </nuxt-link>
           </v-list-item>
 
           <v-list-item>
-            <nuxt-link to="/dashboard" class="nav-link sideList">
+            <nuxt-link to="/dashboard" class="nav-link">
               <v-list-item-title class="listeTexte nvbar-text">Evolution des dépenses</v-list-item-title>
             </nuxt-link>
           </v-list-item>
 
           <v-list-item>
-            <nuxt-link to="/dashboard" class="nav-link mt-4">
+            <nuxt-link to="/dashboard" class="nav-link">
               <v-list-item-title class="listeTexte nvbar-text">Récapitulatif des transactions</v-list-item-title>
             </nuxt-link>
           </v-list-item>
 
           <v-list-item>
-            <nuxt-link to="/dashboard" class="nav-link mt-4">
+            <nuxt-link to="/dashboard" class="nav-link">
             <v-list-item-title class="listeTexte nvbar-text">Tableau de bord</v-list-item-title>
             </nuxt-link>
           </v-list-item>
 
           <v-list-item>
-            <nuxt-link to="/transactions" class="nav-link mt-4">
+            <nuxt-link to="/transactions" class="nav-link">
               <v-list-item-title class="listeTexte nvbar-text">Ajouter une transaction</v-list-item-title>
             </nuxt-link>
           </v-list-item>
