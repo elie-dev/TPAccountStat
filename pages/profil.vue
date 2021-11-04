@@ -4,7 +4,7 @@
       <v-container class="grey lighten-5 mt-1" fill-height fluid>
         <v-row no-gutters>
 
-          <v-col :key="n" cols="4" sm="4" class="text-center">
+          <v-col cols="4" sm="4" class="text-center">
             <img width="50%" src="https://meetanentrepreneur.lu/wp-content/uploads/2019/08/profil-linkedin.jpg"
                  alt="photo de profil utilisateur"
                  class="rounded-circle">
@@ -25,7 +25,7 @@
       <h2 class="ml-8">Changer de mot de passe</h2>
       <v-container class="" fill-height fluid>
         <v-row no-gutters>
-          <v-col :key="n" cols="12" class="text-center">
+          <v-col cols="12" class="text-center">
             <v-form v-model="valid"
                     lazy-validation>
               <v-container>
@@ -115,7 +115,8 @@ export default {
   }),
   methods: {
     async changePassword() {
-      if (this.lastPassword === '' || this.password === '' || this.confirmPassword === '') {
+      // In progress
+      /*if (this.lastPassword === '' || this.password === '' || this.confirmPassword === '') {
         await this.$store.dispatch(
           BUS_ACTIONS.SET_MESSAGE,
           'Tous les champs sont requis.'
@@ -132,11 +133,11 @@ export default {
           BUS_ACTIONS.SET_MESSAGE,
           'Une erreur est survenue pendant la modification de votre mot de passe.'
         )
-      }
+      }*/
     },
   },
   mounted() {
-    this.email = this.$cookies.get("auth")["email"]
+    this.email = this.$cookies.get("user")["email"]
   },
 }
 </script>
