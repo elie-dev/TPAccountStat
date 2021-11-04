@@ -1,4 +1,8 @@
 export const ACTIONS = {
+  INIT_USER_METHOD: 'users/initUser',
+  GET_CURRENT_USER_METHOD: 'users/getCurrentUser',
+
+  CHANGE_PASSWORD_METHOD: 'users/changePassword',
   ADD_USER_METHOD: 'users/addUser',
   SIGN_IN_METHOD: 'users/signIn',
   SIGN_OUT_METHOD: 'users/signOut',
@@ -8,19 +12,35 @@ export const ACTIONS = {
 
 export const state = () => ({
   user: null,
+  profile: {},
 })
 
 export const mutations = {
+  INIT_USER: (state, { profile, users }) => {
+    state.data = users
+    state.profile = profile
+  },
   SIGN_IN: (state, user) => {
     state.user = user
   },
+  SIGN_OUT: (state) => {
+    state.user = null
+    console.log('Vous êtes déconnecté...');
+  },
   REMOVE_USER: (state, data) => {
-    const index = state.data.findIndex((el) => el.email == data.email)
+    const index = state.data.findIndex((el) => el.email === data.email)
     state.data.splice(index, 1)
   },
 }
 
 export const actions = {
+  initUser({ commit }) {
+    const profile = this.$cookies.get('profile') ?? {}
+    const users = JSON.parse(localStorage.getItem('users')) ?? []
+
+    commit('INIT_USER', { profile, users })
+  },
+
   async signIn({ commit, state }, data) {
     try {
       let user = await this.$fire.auth.signInWithEmailAndPassword(data.email, data.password)
@@ -35,9 +55,12 @@ export const actions = {
       throw new Error()
     }
   },
+  getCurrentUser() {
+    return this.$fire.firestore.collection('users').doc('q60hKwCo1utAKxKMZtPbTXHngKEt').get()
+  },
+
   signOut({ commit }) {
     this.$cookies.remove('user')
-
     commit('SIGN_OUT')
   },
   forgotPassword({}, data) {
@@ -74,7 +97,7 @@ export const actions = {
 
     const users = JSON.parse(localStorage.getItem('users'))
 
-    const newUserList = users.filter((user) => user.email != profile.email)
+    const newUserList = users.filter((user) => user.email !== profile.email)
 
     // ICI
 

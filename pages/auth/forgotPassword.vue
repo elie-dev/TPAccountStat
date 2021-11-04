@@ -33,10 +33,7 @@
 
       </v-form></div>
     </div>
-    <div class="kwadrat d-none d-lg-block">
-      <div class="trojkat">
-        <div class="trojkat_bg"></div>
-      </div>
+    <div class="image d-none d-lg-block">
     </div>
   </div>
   
@@ -65,39 +62,15 @@
     width: 100%;
   }
 
-  .kwadrat
-  { 
+  .image  {
     position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 750px; 
-    height: 1300px; 
-    border-bottom: 1px solid #000; 
-    overflow: hidden; 
-  }
-  .trojkat
-  { 
-    position: relative; 
-    overflow: hidden; 
-    transform: rotate(45deg) skew(10deg,10deg); 
-    width: 1080px;
-    height: 1300px;
-    margin:720px 0 0 32px;
-  }
-
-  .trojkat_bg
-  {
-    position: absolute;
-    width: 200%;
-    height: 200%;
-    top: -50%;
-    left: -50%;
-    z-index: -1;
     background: url("~/assets/images/statFond.jpg");
-    background-size: 100%;
+    background-size: 200%;
     background-position: center top;
-    transform: skew(-10deg,-10deg) rotate(-45deg) ;
-    transition: .3s;
+    right: 0;
+    top: 0;
+    width: 50%;
+    height: 100vh;
   }
 </style>
 
