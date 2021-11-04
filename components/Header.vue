@@ -8,7 +8,7 @@
       <!--src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"-->
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
-      <img class="ml-12 logo" width="30em" src="~/assets/logos/logoStat.png"/>
+      <img class="ml-12 logo" width="30em" src="~/assets/images/logoStat.png"/>
 
       <v-spacer></v-spacer>
 
