@@ -71,7 +71,7 @@
           </v-list-item>
 
           <v-list-item>
-            <nuxt-link to="/transactions" class="nav-link">
+            <nuxt-link to="/transaction" class="nav-link">
               <v-list-item-title class="listeTexte nvbar-text">Ajouter une transaction</v-list-item-title>
             </nuxt-link>
           </v-list-item>
