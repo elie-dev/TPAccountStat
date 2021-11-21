@@ -12,7 +12,7 @@
           <v-col cols="8" class="mt-7">
             <div class="c1 mr-12 text-center">
 <!--                <p>{{ $store.state.profile }}</p>-->
-                <p>{{  }}</p>
+                <p>{{ name }}</p>
                 <p>{{ email }}</p>
 <!--              <p>{{ this.$fire.firestore.collection('users').doc('q60hKwCo1utAKxKMZtPbTXHngKEt').get() }}</p>-->
             </div>
@@ -36,7 +36,7 @@
                       label="Ancien mot de passe..."
                       required
                       :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-                      :type="show1 ? 'text' : 'password'"
+                      :type="show1 ? 'text' : 'current-password'"
                       @click:append="show1 = !show1"
                     />
 
@@ -46,7 +46,7 @@
                       label="Nouveau mot de passe..."
                       required
                       :append-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'"
-                      :type="show2 ? 'text' : 'password'"
+                      :type="show2 ? 'text' : 'new-password'"
                       @click:append="show2 = !show2"
                     />
 
@@ -56,7 +56,7 @@
                       label="Confirmer nouveau mot de passe..."
                       required
                       :append-icon="show3 ? 'mdi-eye' : 'mdi-eye-off'"
-                      :type="show3 ? 'text' : 'password'"
+                      :type="show3 ? 'text' : 'new-password'"
                       @click:append="show3 = !show3"
                     />
 
@@ -83,11 +83,11 @@
 import Header from '~/components/Header.vue'
 import {BUS_ACTIONS} from "~/store/bus";
 import {ACTIONS} from "~/store/users";
+import currentUser from "~/store/users";
 
 export default {
   components: { Header },
   data: () => ({
-    connectedUser: "",
     name: "",
     email: "",
     users: [],
@@ -98,7 +98,7 @@ export default {
 
     // TODO : Corriger es règles de validation
 
-    lastPassword: '',
+    lastPassword: "",
     lastPasswordRules: [
       v => !!v || 'Ancien Mot de passe obligatoire',
       // v => v !== this.lastPassword  || 'Ancien mot de passe incorrect',
@@ -116,7 +116,7 @@ export default {
   methods: {
     async changePassword() {
       // In progress
-      /*if (this.lastPassword === '' || this.password === '' || this.confirmPassword === '') {
+      if (this.lastPassword === '' || this.password === '' || this.confirmPassword === '') {
         await this.$store.dispatch(
           BUS_ACTIONS.SET_MESSAGE,
           'Tous les champs sont requis.'
@@ -133,11 +133,13 @@ export default {
           BUS_ACTIONS.SET_MESSAGE,
           'Une erreur est survenue pendant la modification de votre mot de passe.'
         )
-      }*/
+      }
     },
   },
   mounted() {
-    this.email = this.$cookies.get("user")["email"]
+    this.email = this.$fire.auth.currentUser['email']
+    this.name = this.$fire.auth.currentUser["displayName"]
+    // this.name = this.$cookies.get("user")["displayName"]
   },
 }
 </script>
