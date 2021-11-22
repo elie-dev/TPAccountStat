@@ -1,0 +1,88 @@
+{
+    "data" :[
+        {
+            "categorie" : "depense",
+            "name" : "gtaV",
+            "tag" : "jeux",
+            "montant" : "60",
+            "date" : "2021-11-11"
+        },
+        {
+            "categorie" : "depense",
+            "name" : "hoi 4",
+            "tag" : "jeux",
+            "montant" : "20",
+            "date" : "2021-11-02"
+        },
+        {
+            "categorie" : "depense",
+            "name" : "ck 3",
+            "tag" : "jeux",
+            "montant" : "60",
+            "date" : "2021-09-04"
+        },
+        {
+            "categorie" : "revenue",
+            "name" : "vente zelda",
+            "tag" : "jeux",
+            "montant" : "20",
+            "date" : "2021-03-20"
+        },
+        {
+            "categorie" : "revenue",
+            "name" : "ck 3",
+            "tag" : "maison",
+            "montant" : "10000",
+            "date" : "2021-02-01"
+        },
+        {
+            "categorie" : "depense",
+            "name" : "rembousement credits",
+            "tag" : "maison",
+            "montant" : "2500",
+            "date" : "2021-03-01"
+        },
+        {
+            "categorie" : "depense",
+            "name" : "rembousement credits",
+            "tag" : "maison",
+            "montant" : "2500",
+            "date" : "2021-04-01"
+        },
+        {
+            "categorie" : "depense",
+            "name" : "rembousement credits",
+            "tag" : "maison",
+            "montant" : "2500",
+            "date" : "2021-05-01"
+        },
+        {
+            "categorie" : "depense",
+            "name" : "rembousement credits",
+            "tag" : "maison",
+            "montant" : "2500",
+            "date" : "2021-06-01"
+        },
+        {
+            "categorie" : "depense",
+            "name" : "courses semaine",
+            "tag" : "nourriture",
+            "montant" : "85",
+            "date" : "2021-07-09"
+        },
+        {
+            "categorie" : "depense",
+            "name" : "controle",
+            "tag" : "voiture",
+            "montant" : "200",
+            "date" : "2021-06-03"
+        },
+        {
+            "categorie" : "revenue",
+            "name" : "vente renault",
+            "tag" : "voiture",
+            "montant" : "3500",
+            "date" : "2021-08-05"
+        }
+    ]
+}

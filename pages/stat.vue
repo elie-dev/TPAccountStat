@@ -1,7 +1,10 @@
 <template>
   <div>
-    <piechart :typeTransaction="'depense'" />
-    <piechart :typeTransaction="'revenue'" />
+    <div class="d-flex">
+      <piechart :typeTransaction="'depense'" />
+      <piechart :typeTransaction="'revenue'" />
+    </div> 
+    <div></div>
   </div>  
 </template>
 
@@ -11,11 +14,12 @@
 <script>
 
 import { ACTIONS } from '~/store/transaction'
-import piechart from '~/components/pichart.vue'
+import piechart from '~/components/piechart.vue'
+import columnChart from '~/components/columnChart.vue'
 
 export default {
-  components: { piechart },
-  async mounted() {
+  components: { piechart, columnChart },
+  async created() {
      try {
         await this.$store.dispatch(ACTIONS.GET_TRANSACTION)
         pieChartDepenseData()

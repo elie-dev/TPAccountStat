@@ -39,6 +39,7 @@ export const actions = {
   async getTransaction({ commit }) {
     try {
       const currentUser = this.$fire.auth.currentUser
+      console.log(currentUser)
       //console.log(this.$fire.firestore.collection('transaction').add(data))
       this.$fire.firestore
        .collection('dataUser').doc(currentUser.uid).collection('transactions')

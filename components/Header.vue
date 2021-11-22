@@ -3,7 +3,6 @@
   <main>
 
     <v-app-bar class="head"
-      prominent
     >
       <!--src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"-->
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
@@ -129,7 +128,6 @@
   z-index: 8;
   background-color: #778DA9!important;
   vertical-align: middle;
-  height: 60px!important;
 }
 .sideList {
   padding-top: 2em;

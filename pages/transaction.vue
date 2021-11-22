@@ -122,8 +122,17 @@
           </v-card-actions>
         </v-card>
       </v-dialog>
+      <template>
+          <v-btn
+            dark
+            color="success"
+            text
+            @click="generateDB"
+          >
+           Générer données aléatoire
+          </v-btn>
+        </template>
     </v-row>
-
   </div>
 </template>
 
@@ -132,6 +141,7 @@
 import { ACTIONS } from '~/store/transaction'
 import { BUS_ACTIONS } from '~/store/bus'
 import AlertComponent from '~/components/AlertComponent.vue'
+import dataDB from '~/assets/database.json'
 
 export default {
   components: { AlertComponent },
@@ -199,6 +209,22 @@ export default {
       else return 'green'
     },
 
+    generateDB () {
+      console.log(dataDB)
+      dataDB.data.forEach(element => {
+        try {
+          this.$store.dispatch(ACTIONS.ADD_TRANSACTION, {
+            data: element
+          })
+        } catch (error) {
+          this.$store.dispatch(
+            BUS_ACTIONS.SET_MESSAGE,
+            'Une erreur est survenue pendant l ajout de votre transaction.'
+          )
+        }
+      });
+    },
+
     async addTransaction() {
       if (this.tag == '' || this.name == '' || this.categorie == '' || this.montant == '' || this.date == '') {
         this.$store.dispatch(
@@ -217,7 +243,7 @@ export default {
           montant : this.montant,
           date : this.date
       }
-
+      console.log(data)
       try {
         await this.$store.dispatch(ACTIONS.ADD_TRANSACTION, {
           data: data
