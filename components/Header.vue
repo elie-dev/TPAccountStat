@@ -46,32 +46,20 @@
           </v-list-item>
 
           <v-list-item>
-            <nuxt-link to="/auth/profil" class="nav-link">
+            <nuxt-link to="/profil" class="nav-link">
               <v-list-item-title class="listeTexte nvbar-text">Page de Profil</v-list-item-title>
             </nuxt-link>
           </v-list-item>
 
           <v-list-item>
-            <nuxt-link to="/dashboard" class="nav-link">
+            <nuxt-link to="/stat" class="nav-link">
               <v-list-item-title class="listeTexte nvbar-text">Evolution des dépenses</v-list-item-title>
             </nuxt-link>
           </v-list-item>
 
           <v-list-item>
-            <nuxt-link to="/dashboard" class="nav-link">
-              <v-list-item-title class="listeTexte nvbar-text">Récapitulatif des transactions</v-list-item-title>
-            </nuxt-link>
-          </v-list-item>
-
-          <v-list-item>
-            <nuxt-link to="/dashboard" class="nav-link">
-            <v-list-item-title class="listeTexte nvbar-text">Tableau de bord</v-list-item-title>
-            </nuxt-link>
-          </v-list-item>
-
-          <v-list-item>
             <nuxt-link to="/transaction" class="nav-link">
-              <v-list-item-title class="listeTexte nvbar-text">Ajouter une transaction</v-list-item-title>
+              <v-list-item-title class="listeTexte nvbar-text">Transaction(s)</v-list-item-title>
             </nuxt-link>
           </v-list-item>
 
