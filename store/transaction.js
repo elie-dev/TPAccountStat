@@ -4,7 +4,8 @@ export const ACTIONS = {
 }
 
 export const state = () => ({
-  transactions: []
+  transactions: [],
+  tags: []
 })
 
 export const mutations = {
@@ -13,6 +14,9 @@ export const mutations = {
   },
   SET_TRANSACTION: (state, transactions) => {
     state.transactions = transactions 
+  },
+  SET_TAGS: (state, tags) => {
+    state.tags = [...new Set(tags)]
   },
 }
 
@@ -37,10 +41,13 @@ export const actions = {
     try {
       const currentUser = this.$fire.auth.currentUser
       this.$fire.firestore
-       .collection('dataUser').doc(currentUser.uid).collection('transactions')
-       .get()
-       .then(
-         (data) => (commit('SET_TRANSACTION', data.docs.map((transaction) => transaction.data().data)))
+        .collection('dataUser').doc(currentUser.uid).collection('transactions')
+        .get()
+        .then(
+          (data) => {
+            commit('SET_TRANSACTION', data.docs.map((transaction) => transaction.data().data))
+            commit('SET_TAGS', data.docs.map((transaction) => transaction.data().data.tag))
+          }
        )
       } catch (error) {
         throw new Error()
