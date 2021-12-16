@@ -16,7 +16,7 @@
           </v-dialog>
         </v-col>
         <v-col cols="12" sm="6">
-          <v-select v-model="$store.state.transaction.tags" :items="$store.state.transaction.tags" attach chips label="Tags" multiple></v-select>
+          <v-select v-model="tagsValue" :items="tagsItems" attach chips label="Tags" multiple></v-select>
         </v-col>
       </v-row>
     </template>
@@ -42,9 +42,16 @@ export default {
    typeTransaction: String
   },
 
-  mounted() {
-    this.tagsItems = this.$store.state.transaction.tags
-    this.tagsValue = this.$store.state.transaction.tags
+  computed: {
+  doneTodosCount () {
+    return this.$store.state.transaction.tags
+    }
+  },
+  watch:{
+      doneTodosCount() {
+        this.tagsItems = this.$store.state.transaction.tags
+        this.tagsValue = this.$store.state.transaction.tags
+      }
   },
 
   methods: {
@@ -101,7 +108,7 @@ export default {
       
       Object.keys(filterData).forEach(key => {
         // Si le tag n'est pas présent on met la valeur a zero
-        if (this.$store.state.transaction.tags.find(element => element === key) !== undefined) {
+        if (this.tagsValue.find(element => element === key) !== undefined) {
           chartData.push([key, filterData[key]])
         } else {
           chartData.push([key, 0])
@@ -111,7 +118,8 @@ export default {
     },
   },
 
-  data: () => ({
+  data: function (){
+    return {
       // Array will be automatically processed with visualization.arrayToDataTable function
       chartOptions: {
         chart: {
@@ -128,6 +136,7 @@ export default {
       menu2: false,
       tagsItems: [],
       tagsValue: [],
-  }),
+    }
+  },
 }
 </script>

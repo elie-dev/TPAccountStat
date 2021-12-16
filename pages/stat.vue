@@ -22,7 +22,6 @@ export default {
   async created() {
      try {
         await this.$store.dispatch(ACTIONS.GET_TRANSACTION)
-        pieChartDepenseData()
       } catch (error) {
         return new Error()
       }

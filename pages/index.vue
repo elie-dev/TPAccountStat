@@ -186,9 +186,7 @@ export default {
   components: { AlertComponent },
   async mounted() {
      try {
-        await this.$store.dispatch(ACTIONS.GET_TRANSACTION)
-
-        this.setData()
+        this.$store.dispatch(ACTIONS.GET_TRANSACTION)
       } catch (error) {
         this.$store.dispatch(
           BUS_ACTIONS.SET_MESSAGE,
@@ -204,15 +202,7 @@ export default {
       editing: null,
       editingIndex: -1,
       items: [
-        { header: 'Select an option or create one' },
-        {
-          text: 'Voiture',
-          color: 'cyan',
-        },
-        {
-          text: 'Alimentation',
-          color: 'red',
-        },
+        
       ],
       nonce: 1,
       menu: false,
@@ -269,6 +259,12 @@ export default {
       ],
   }),
 
+  computed: {
+  doneTodosCount () {
+      return this.$store.state.transaction.tags
+    }
+  },
+
   watch: {
       model (val, prev) {
         if (val.length === prev.length) return
@@ -284,6 +280,18 @@ export default {
           return v
         })
       },
+      doneTodosCount() {
+        console.log('test')
+        const tagsList = []
+        this.$store.state.transaction.tags.forEach((item, index) => {
+          console.log(item) //value
+          tagsList.push({
+            'text': item,
+            'color': this.colors[index % this.colors.length]
+          })
+        })
+        this.items = tagsList
+      }
     },
 
   methods: {
