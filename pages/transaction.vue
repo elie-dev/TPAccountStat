@@ -30,7 +30,7 @@
             color="success"
             text
           >
-            Ajouter une donnée
+            Ajouter une transaction
           </v-btn>
         </template>
         <v-card>
@@ -50,7 +50,7 @@
                     v-model="categorie"
                   >
                     <v-btn value="revenue">
-                      <span class="hidden-sm-and-down">Revenue</span>
+                      <span class="hidden-sm-and-down">Revenu</span>
                     </v-btn>
                     <v-btn value="depense">
                       <span class="hidden-sm-and-down">Dépense</span>

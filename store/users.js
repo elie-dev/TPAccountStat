@@ -55,10 +55,6 @@ export const actions = {
       throw new Error()
     }
   },
-  getCurrentUser() {
-    return this.$fire.firestore.collection('users').doc('q60hKwCo1utAKxKMZtPbTXHngKEt').get()
-  },
-
   signOut({ commit }) {
     this.$cookies.remove('user')
     commit('SIGN_OUT')
