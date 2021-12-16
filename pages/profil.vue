@@ -11,10 +11,8 @@
           </v-col>
           <v-col cols="8" class="mt-7">
             <div class="c1 mr-12 text-center">
-<!--                <p>{{ $store.state.profile }}</p>-->
                 <p>{{ name }}</p>
                 <p>{{ email }}</p>
-<!--              <p>{{ this.$fire.firestore.collection('users').doc('q60hKwCo1utAKxKMZtPbTXHngKEt').get() }}</p>-->
             </div>
           </v-col>
         </v-row>
@@ -83,7 +81,6 @@
 import Header from '~/components/Header.vue'
 import {BUS_ACTIONS} from "~/store/bus";
 import {ACTIONS} from "~/store/users";
-import currentUser from "~/store/users";
 
 export default {
   components: { Header },
@@ -95,8 +92,6 @@ export default {
     show2: false,
     show3: false,
     valid: true,
-
-    // TODO : Corriger es règles de validation
 
     lastPassword: "",
     lastPasswordRules: [
@@ -115,7 +110,6 @@ export default {
   }),
   methods: {
     async changePassword() {
-      // In progress
       if (this.lastPassword === '' || this.password === '' || this.confirmPassword === '') {
         await this.$store.dispatch(
           BUS_ACTIONS.SET_MESSAGE,
@@ -125,7 +119,6 @@ export default {
       }
       try {
         await this.$store.dispatch(ACTIONS.CHANGE_PASSWORD_METHOD, {
-          // password: this.password,
         })
         await this.$router.push('/profile')
       } catch (error) {
@@ -139,7 +132,6 @@ export default {
   mounted() {
     this.email = this.$fire.auth.currentUser['email']
     this.name = this.$fire.auth.currentUser["displayName"]
-    // this.name = this.$cookies.get("user")["displayName"]
   },
 }
 </script>
