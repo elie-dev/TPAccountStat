@@ -66,14 +66,53 @@
                     ></v-text-field>
                   </v-col>
                   <v-col cols="12">
-                    <v-text-field
-                      :rules="categorieRules"
+
+                    <v-combobox :rules="categorieRules"
                       v-model="tag"
                       label="sous-categorie"
-                      type='text'
                       required
-                    ></v-text-field>
+                      :filter="filter"
+                      :hide-no-data="!search"
+                      :items="items"
+                      :search-input.sync="search"
+                      hide-selected
+                      small-chips
+                      solo>
+      <template v-slot:no-data>
+        <v-list-item>
+          <span class="subheading">Create</span>
+          <v-chip
+            :color="`${colors[nonce - 1]} lighten-3`"
+            label
+            small
+          >
+            {{ search }}
+          </v-chip>
+        </v-list-item>
+      </template>
+      <template v-slot:selection="{ attrs, item, parent, selected }">
+        <v-chip
+          v-if="item === Object(item)"
+          v-bind="attrs"
+          :color="`${item.color} lighten-3`"
+          :input-value="selected"
+          label
+          small
+        >
+          <span class="pr-2">
+            {{ item.text }}
+          </span>
+          <v-icon
+            small
+            @click="parent.selectItem(item)"
+          >
+            $delete
+          </v-icon>
+        </v-chip>
+      </template>
+    </v-combobox>
                   </v-col>
+
                   <v-col cols="12">
                     <v-text-field
                       :rules="montantRules"
@@ -150,6 +189,33 @@ export default {
   },
 
   data: () => ({
+    activator: null,
+      attach: null,
+      colors: ['green', 'purple', 'indigo', 'cyan', 'teal', 'orange'],
+      editing: null,
+      editingIndex: -1,
+      items: [
+        { header: 'Select an option or create one' },
+        {
+          text: 'Voiture',
+          color: 'cyan',
+        },
+        {
+          text: 'Alimentation',
+          color: 'red',
+        },
+      ],
+      nonce: 1,
+      menu: false,
+      tag: [
+        {
+          text: 'A Catégoriser',
+          color: 'blue',
+        },
+      ],
+      x: 0,
+      search: null,
+      y: 0,
     dialog: false,
     date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
     menu: false,
@@ -184,15 +250,46 @@ export default {
           align: 'start',
           sortable: false,
           value: 'name',
+          selected: [],
         },
         { text: 'Categorie', value: 'categorie' },
         { text: 'Montant', value: 'montant' },
         { text: 'Tag', value: 'tag' },
         { text: 'Date', value: 'date' },
+        { text: 'Actions', value: '' },
       ],
   }),
 
+  watch: {
+      model (val, prev) {
+        if (val.length === prev.length) return
+        this.tag = val.map(v => {
+          if (typeof v === 'string') {
+            v = {
+              text: v,
+              color: this.colors[this.nonce - 1],
+            }
+            this.items.push(v)
+            this.nonce++
+          }
+          return v
+        })
+      },
+    },
+
   methods: {
+    
+      filter (item, queryText, itemText) {
+        if (item.header) return false
+        const hasValue = val => val != null ? val : ''
+        const text = hasValue(itemText)
+        const query = hasValue(queryText)
+        return text.toString()
+          .toLowerCase()
+          .indexOf(query.toString().toLowerCase()) > -1
+      },
+
+
 
     getCategorie (categorie) {
       if (categorie === "depense") return 'red'
@@ -205,7 +302,6 @@ export default {
           BUS_ACTIONS.SET_MESSAGE,
           'Tous les champs sont requis.'
         )
-
         return
       }
 
@@ -213,7 +309,7 @@ export default {
         const data = {
           categorie : this.categorie,
           name : this.name,
-          tag : this.tag,
+          tag : this.tag.text,
           montant : this.montant,
           date : this.date
       }
@@ -225,10 +321,12 @@ export default {
       } catch (error) {
         this.$store.dispatch(
           BUS_ACTIONS.SET_MESSAGE,
-          'Une erreur est survenue pendant l ajout de votre transaction.'
+          'Une erreur est survenue pendant l\'ajout de votre transaction.'
         )
       }
     },
   },
 }
+
+
 </script>

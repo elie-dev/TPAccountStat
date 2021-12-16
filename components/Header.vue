@@ -3,7 +3,6 @@
   <main>
 
     <v-app-bar class="head"
-      prominent
     >
       <!--src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"-->
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
