@@ -2,7 +2,7 @@
   <div>
     <div class="d-flex flex-wrap">
       <piechart :typeTransaction="'depense'" />
-      <piechart :typeTransaction="'revenue'" />
+      <piechart :typeTransaction="'revenu'" />
     </div> 
     <div></div>
   </div>  

@@ -281,10 +281,8 @@ export default {
         })
       },
       doneTodosCount() {
-        console.log('test')
         const tagsList = []
         this.$store.state.transaction.tags.forEach((item, index) => {
-          console.log(item) //value
           tagsList.push({
             'text': item,
             'color': this.colors[index % this.colors.length]
