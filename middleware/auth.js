@@ -1,7 +1,5 @@
 export default function ({ app, route, redirect }) {
-  console.log('middleware auth loaded')
-
-  const protectedRoutes = ['index']
+  const protectedRoutes = ['index', 'profil', 'stat', 'transaction']
   const guestRoutes = ['auth-login', 'auth-register']
 
   const user = app.$cookies.get('user') ?? {}

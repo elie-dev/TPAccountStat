@@ -4,16 +4,19 @@ export const ACTIONS = {
 }
 
 export const state = () => ({
-  transactions: []
+  transactions: [],
+  tags: []
 })
 
 export const mutations = {
   ADD_TRANSACTION: (state, transaction) => {
     state.transactions.push(transaction.data) 
-    console.log(state.transactions)
   },
   SET_TRANSACTION: (state, transactions) => {
     state.transactions = transactions 
+  },
+  SET_TAGS: (state, tags) => {
+    state.tags = [...new Set(tags)]
   },
 }
 
@@ -22,7 +25,6 @@ export const actions = {
 
     try {
       const currentUser = this.$fire.auth.currentUser
-      //console.log(this.$fire.firestore.collection('transaction').add(data))
 
       this.$fire.firestore
        .collection('dataUser').doc(currentUser.uid).collection('transactions')
@@ -31,7 +33,6 @@ export const actions = {
          () => (commit('ADD_TRANSACTION', data))
        )
       } catch (error) {
-        console.log(error)
         throw new Error()
       }      
   },
@@ -39,15 +40,16 @@ export const actions = {
   async getTransaction({ commit }) {
     try {
       const currentUser = this.$fire.auth.currentUser
-      //console.log(this.$fire.firestore.collection('transaction').add(data))
       this.$fire.firestore
-       .collection('dataUser').doc(currentUser.uid).collection('transactions')
-       .get()
-       .then(
-         (data) => (commit('SET_TRANSACTION', data.docs.map((transaction) => transaction.data().data)))
+        .collection('dataUser').doc(currentUser.uid).collection('transactions')
+        .get()
+        .then(
+          (data) => {
+            commit('SET_TRANSACTION', data.docs.map((transaction) => transaction.data().data))
+            commit('SET_TAGS', data.docs.map((transaction) => transaction.data().data.tag))
+          }
        )
       } catch (error) {
-        console.log(error)
         throw new Error()
       }
 

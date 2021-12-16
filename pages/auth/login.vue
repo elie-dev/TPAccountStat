@@ -4,6 +4,7 @@
       <div>
         <div class="logo"><img src="~/assets/images/logoStat.png" /></div>
         <div class="font-weight-bold text-h3 text-center mt-5 mb-5">Se connecter</div>
+        <AlertComponent></AlertComponent>
         <v-form
           ref="form"
           v-model="valid"

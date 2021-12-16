@@ -99,9 +99,7 @@ export default {
         await this.$store.dispatch(ACTIONS.FORGOT_PASSWORD_METHOD, {
           email: this.email,
         })
-        //this.$router.push('/')
       } catch (error) {
-        console.log(error)
         this.$store.dispatch(
           BUS_ACTIONS.SET_MESSAGE,
           'Email inconnu'

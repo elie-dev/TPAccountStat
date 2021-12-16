@@ -9,7 +9,7 @@
       class="foot lighten-2 py-4 text-center white--text"
       cols="12"
     >
-      {{ new Date().getFullYear() }} — <strong>LoveTeam CA B3</strong>
+      {{ new Date() }}
     </v-col>
   </v-footer>
 </template>

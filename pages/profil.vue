@@ -138,7 +138,7 @@ export default {
 
 
 
-<style>
+<style scoped>
 p {
   font-weight: bold;
   font-size: 1.2em;

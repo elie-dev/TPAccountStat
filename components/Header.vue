@@ -3,7 +3,6 @@
   <main>
 
     <v-app-bar class="head"
-      prominent
     >
       <!--src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"-->
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
@@ -59,7 +58,7 @@
           </v-list-item>
 
           <v-list-item>
-            <nuxt-link to="/transaction" class="nav-link">
+            <nuxt-link to="/" class="nav-link">
               <v-list-item-title class="listeTexte nvbar-text">Transaction(s)</v-list-item-title>
             </nuxt-link>
           </v-list-item>
@@ -117,7 +116,6 @@
   z-index: 8;
   background-color: #778DA9!important;
   vertical-align: middle;
-  height: 60px!important;
 }
 .sideList {
   padding-top: 2em;
