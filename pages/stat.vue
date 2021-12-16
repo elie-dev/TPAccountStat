@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="d-flex">
+    <div class="d-flex flex-wrap">
       <piechart :typeTransaction="'depense'" />
       <piechart :typeTransaction="'revenue'" />
     </div> 

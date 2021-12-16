@@ -25,7 +25,6 @@ export const mutations = {
   },
   SIGN_OUT: (state) => {
     state.user = null
-    console.log('Vous êtes déconnecté...');
   },
   REMOVE_USER: (state, data) => {
     const index = state.data.findIndex((el) => el.email === data.email)
@@ -49,7 +48,6 @@ export const actions = {
         path: '/',
         maxAge: 60 * 60 * 24 * 7,
       })
-      console.log(this.$cookies.get('user'))
       commit('SIGN_IN', user)
     } catch (error) {
       throw new Error()
@@ -66,7 +64,6 @@ export const actions = {
   forgotPassword({}, data) {
     try {
       const response = this.$fire.auth.sendPasswordResetEmail(data.email)
-      console.log(response)
     } catch (error) {
       throw new Error()
     }
@@ -84,9 +81,6 @@ export const actions = {
         // Update successful
         // ...
       }).catch((error) => {
-        console.log(error)
-        // An error occurred
-        // ...
       });
     } catch (error) {
       throw new Error()
