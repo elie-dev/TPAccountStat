@@ -58,7 +58,7 @@
           </v-list-item>
 
           <v-list-item>
-            <nuxt-link to="/transaction" class="nav-link">
+            <nuxt-link to="/" class="nav-link">
               <v-list-item-title class="listeTexte nvbar-text">Transaction(s)</v-list-item-title>
             </nuxt-link>
           </v-list-item>
