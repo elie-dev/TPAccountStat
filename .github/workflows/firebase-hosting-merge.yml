@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v2
       - run: npm ci && NITRO_PRESET=firebase npm run build
       - run : npm run-script generate
-      - run : firebase deploy 
+      - run : firebase deploy --only hosting 
       - uses: FirebaseExtended/action-hosting-deploy@v0
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
