@@ -56,14 +56,14 @@ export default {
           // subscribeManually: false,
         },
         ssr: false, // default
-        emulatorPort: 9099,
-        emulatorHost: 'http://localhost',
+        // emulatorPort: 9099,
+        // emulatorHost: 'http://localhost',
       },
       firestore: {
         memoryOnly: false, // default
         enablePersistence: true,
-        emulatorPort: 8080,
-        emulatorHost: 'localhost',
+        // emulatorPort: 8080,
+        // emulatorHost: 'localhost',
       }, // Just as example. Can be any other service.
     },
   },
