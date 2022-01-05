@@ -115,7 +115,7 @@
 .head {
   z-index: 8;
   /* background-color: #778DA9!important; */
-  background-color: rgb(26, 59, 22)!important;
+  background-color: rgb(114, 187, 106)!important;
   vertical-align: middle;
 }
 .sideList {
